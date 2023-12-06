@@ -3,6 +3,6 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: 'your-api'
+	production: false,
+	apiUrl: 'https://query2.finance.yahoo.com/v8/finance/chart/'
 };

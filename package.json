@@ -24,6 +24,7 @@
     "husky": "^8.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "yahoo-stock-api": "^2.2.1",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {

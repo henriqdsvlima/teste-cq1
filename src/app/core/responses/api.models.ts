@@ -1,24 +1,36 @@
 // api.models.ts
 
+import { StockPriceData } from "src/app/interfaces/stock-data";
 
 
-export interface ApiResponse<T> {
-  data: T;
-  success: boolean;
-  message?: string;
+
+export interface StockResponse {
+	chart: {
+		result: StockDataResult[]
+		error: null
+	}
+	success: boolean;
 }
 
-export interface ApiListResponse<T> {
-  data: T[];
-  success: boolean;
-  message?: string;
-  pagination?: Pagination;
+export interface StockDataResult {
+	data: StockPriceData[];
+	timestamp: number[],
+	indicators: {
+		quote: StockDataQuote
+	}
 }
 //
+export interface StockTradingPeriod {
+	timezone: string;
+	start: number;
+	end: number;
+}
 
-export interface Pagination {
-  total: number;
-  perPage: number;
-  currentPage: number;
-  lastPage: number;
+
+export interface StockDataQuote {
+	low: [];
+	open: [];
+	high: [];
+	volume: [];
+	close: [];
 }
