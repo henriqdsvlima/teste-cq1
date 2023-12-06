@@ -6,18 +6,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { TokenInterceptor } from './core/token/token.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './components/shared/shared/shared.module';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HomeComponent,
-
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		SharedModule
 	],
 	providers: [
 		HttpClient,
