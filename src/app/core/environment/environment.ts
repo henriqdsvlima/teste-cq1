@@ -4,5 +4,5 @@
 
 export const environment = {
 	production: false,
-	apiUrl: 'https://query2.finance.yahoo.com/v8/finance/chart/'
+	apiUrl: 'http://localhost:3000/api'
 };

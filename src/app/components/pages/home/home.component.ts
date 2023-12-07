@@ -9,13 +9,28 @@ import { StockPriceData } from 'src/app/interfaces/stock-data';
 })
 export class HomeComponent implements OnInit {
 
-	data: StockPriceData[] = []
+	data: any = []
 
 	ngOnInit(): void {
+
+		console.log(this.getStockDataFromYahooFinances())
 
 	}
 
 	constructor(private apiService: ApiService) {
 
 	}
+
+	getStockDataFromYahooFinances() {
+		this.apiService.fetchStockData('TSLA').subscribe(
+			(response) => {
+				this.data = response;
+				console.log('Dados recebidos:', this.data);
+			},
+			(error) => {
+				console.error('Erro ao obter dados:', error);
+			}
+		);
+	}
 }
+

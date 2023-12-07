@@ -1,11 +1,12 @@
 <div>
 	<form [formGroup]="searchStock" (ngSubmit)="onSubmit()">
+		<label for="inputValue">Selecione um ativo:</label>
 		<input
 			class="input"
 			type="text"
 			id="inputValue"
 			formControlName="inputValue"
-			placeholder="Selecione um ativo"
+			placeholder="Ex: TSLA, AAAPL, etc"
 		/>
 	</form>
 </div>
