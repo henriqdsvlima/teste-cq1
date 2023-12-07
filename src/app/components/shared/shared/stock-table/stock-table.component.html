@@ -1,50 +1,65 @@
-<div *ngIf="stockData" class="overflow-x-auto">
-	<table class="min-w-full border border-gray-300">
-		<thead>
-			<tr>
-				<th
-					scope="col"
-					class="px-6 py-3 border-b text-left font-bold text-sm text-gray-600 uppercase"
+<div
+	*ngIf="stockData"
+	class="overflow-x-auto grid grid-cols-1 sm:grid-cols-2 gap-4"
+>
+	<!-- Tabela -->
+	<div class="mb-4 sm:mb-0">
+		<table class="min-w-full border border-gray-300">
+			<thead>
+				<tr>
+					<th
+						scope="col"
+						class="px-6 py-3 border-b text-left font-bold text-sm text-gray-600 uppercase"
+					>
+						Dia
+					</th>
+					<th
+						scope="col"
+						class="px-6 py-3 border-b text-left font-bold text-sm text-gray-600 uppercase"
+					>
+						Data
+					</th>
+					<th
+						scope="col"
+						class="px-6 py-3 border-b text-left font-bold text-sm text-gray-600 uppercase"
+					>
+						Valor
+					</th>
+					<th
+						scope="col"
+						class="px-6 py-3 border-b text-left font-bold text-sm text-gray-600 uppercase"
+					>
+						Variação em relação a D-1
+					</th>
+					<th
+						scope="col"
+						class="px-6 py-3 border-b text-left font-bold text-sm text-gray-600 uppercase"
+					>
+						Variação em relação à primeira data
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					*ngFor="let entry of tableData; let i = index"
+					[ngClass]="{ even: i % 2 === 0, odd: i % 2 !== 0 }"
 				>
-					Dia
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 border-b text-left font-bold text-sm text-gray-600 uppercase"
-				>
-					Data
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 border-b text-left font-bold text-sm text-gray-600 uppercase"
-				>
-					Valor
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 border-b text-left font-bold text-sm text-gray-600 uppercase"
-				>
-					Variação em relação a D-1
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 border-b text-left font-bold text-sm text-gray-600 uppercase"
-				>
-					Variação em relação à primeira data
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr
-				*ngFor="let entry of tableData; let i = index"
-				[ngClass]="{ even: i % 2 === 0, odd: i % 2 !== 0 }"
-			>
-				<td>{{ entry.Dia }}</td>
-				<td>{{ entry.Data }}</td>
-				<td>{{ entry.Valor | currency: 'BRL' }}</td>
-				<td>{{ entry.VariacaoDiaAnterior }}</td>
-				<td>{{ entry.VariacaoPrimeiraData }}</td>
-			</tr>
-		</tbody>
-	</table>
+					<td>{{ entry.Dia }}</td>
+					<td>{{ entry.Data }}</td>
+					<td>{{ entry.Valor | currency: 'BRL' }}</td>
+					<td>{{ entry.VariacaoDiaAnterior }}</td>
+					<td>{{ entry.VariacaoPrimeiraData }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Gráfico -->
+	<div>
+		<ngx-charts-line-chart
+			[results]="chartData"
+			[xAxis]="false"
+			[yAxis]="true"
+		></ngx-charts-line-chart>
+	</div>
 </div>

@@ -4,6 +4,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { StockTableComponent } from './stock-table/stock-table.component';
 import { SearchStockComponent } from './search-stock/search-stock.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -12,12 +13,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 	declarations: [
 		HeaderComponent,
 		StockTableComponent,
-		SearchStockComponent,
-
-	],
+		SearchStockComponent],
 	imports: [
 		CommonModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		NgxChartsModule
 	],
 	exports: [
 		HeaderComponent,

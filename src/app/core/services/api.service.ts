@@ -19,7 +19,7 @@ export class ApiService {
 	constructor(private http: HttpClient) { }
 
 	// Get one item by ID
-	fetchStockData(symbol: string, interval: string = '1mo'): Observable<Root> {
+	fetchStockData(symbol: string, interval: string = '1y'): Observable<Root> {
 		return this.http.get<Root>(`${this.baseUrl}/stock-data/${symbol}?interval=${interval}`);
 	}
 

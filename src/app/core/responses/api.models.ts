@@ -8,6 +8,7 @@ export interface Chart {
 }
 
 export interface Result {
+	timestamp: any
 	meta: Meta
 	indicators: Indicators
 }
@@ -66,5 +67,10 @@ export interface Indicators {
 
 export interface Quote {
 	close: number[],
-	open: number[]
+	open: number[] | undefined
+}
+
+export interface Chart {
+	result: Result[];
+	// Outras propriedades, se existirem
 }

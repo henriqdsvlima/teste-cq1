@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { pipe } from 'rxjs';
-import { Chart, Result } from 'src/app/core/responses/api.models';
-import { ApiService } from 'src/app/core/services/api.service';
-import { StockPriceData } from 'src/app/interfaces/stock-data';
-import { Indicators } from '../../../core/responses/api.models';
+
 
 @Component({
 	selector: 'app-home',
@@ -19,7 +15,7 @@ export class HomeComponent {
 	}
 
 
-	constructor(private apiService: ApiService) {
+	constructor() {
 
 	}
 }

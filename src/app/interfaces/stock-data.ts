@@ -1,7 +1,11 @@
-export interface StockPriceData {
-	day: string,
-	date: string;
-	value: number,
-	variationFromPrevious?: string;
-	variationFromFirst?: string;
+export interface StockData {
+	chart: {
+		result: {
+			indicators: {
+				quote: {
+					open: number[] | undefined;
+				};
+			};
+		}[];
+	};
 }
