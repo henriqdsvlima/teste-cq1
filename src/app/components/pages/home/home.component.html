@@ -1,5 +1,7 @@
 <app-header></app-header>
 <main>
-	<app-search-stock></app-search-stock>
+	<app-search-stock
+		(searchSubmitted)="onSearchSubmitted($event)"
+	></app-search-stock>
+	<app-stock-table [assetSymbol]="selectedAsset"></app-stock-table>
 </main>
-<app-stock-table></app-stock-table>

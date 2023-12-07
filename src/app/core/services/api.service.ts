@@ -1,11 +1,11 @@
+
 // api.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, map } from 'rxjs';
-import { StockResponse } from '../responses/api.models';
+import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
 import { environment } from '../environment/environment';
 import { ApiError, ApiErrorType } from '../responses/api-error';
-import { StockPriceData } from 'src/app/interfaces/stock-data';
+import { Root } from '../responses/api.models';
 
 
 
@@ -19,30 +19,13 @@ export class ApiService {
 	constructor(private http: HttpClient) { }
 
 	// Get one item by ID
-	fetchStockData(endpoint: string): Observable<StockPriceData> {
-		return this.http.get<StockPriceData>(`${this.baseUrl}/stock-data/${endpoint}`).pipe(
-
-		);
+	fetchStockData(symbol: string, interval: string = '1mo'): Observable<Root> {
+		return this.http.get<Root>(`${this.baseUrl}/stock-data/${symbol}?interval=${interval}`);
 	}
 
 
-	private handleError(error: HttpErrorResponse): Observable<never> {
-		let apiError: ApiError;
 
-		// Se o erro for uma resposta HTTP
-		if (error.error instanceof Object) {
-			apiError = error.error as ApiError;
-		} else {
-			apiError = {
-				type: ApiErrorType.err1,
-				message: 'Something went wrong. Please try again later.',
-			};
-		}
 
-		return new Observable((observer) => {
-			observer.error(apiError);
-		});
-	}
 }
 
 

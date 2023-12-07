@@ -1,5 +1,5 @@
 export interface StockPriceData {
-	day: number,
+	day: string,
 	date: string;
 	value: number,
 	variationFromPrevious?: string;

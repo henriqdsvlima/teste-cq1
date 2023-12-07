@@ -1,36 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { pipe } from 'rxjs';
+import { Chart, Result } from 'src/app/core/responses/api.models';
 import { ApiService } from 'src/app/core/services/api.service';
 import { StockPriceData } from 'src/app/interfaces/stock-data';
+import { Indicators } from '../../../core/responses/api.models';
 
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-	data: any = []
+	selectedAsset: string | undefined;
 
-	ngOnInit(): void {
-
-		console.log(this.getStockDataFromYahooFinances())
-
+	onSearchSubmitted(stockSymbol: string): void {
+		this.selectedAsset = stockSymbol;
 	}
+
 
 	constructor(private apiService: ApiService) {
 
-	}
-
-	getStockDataFromYahooFinances() {
-		this.apiService.fetchStockData('TSLA').subscribe(
-			(response) => {
-				this.data = response;
-				console.log('Dados recebidos:', this.data);
-			},
-			(error) => {
-				console.error('Erro ao obter dados:', error);
-			}
-		);
 	}
 }
 

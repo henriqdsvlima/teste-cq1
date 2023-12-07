@@ -2,24 +2,23 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use(cors());
-
 app.use(cors({
 	methods: 'GET',
-	allowedHeaders: ['Content-Type', 'Authorization'],
+	allowedHeaders: '*',
   }));
 app.get('/api/stock-data/:symbol', async (req, res) => {
   const symbol = req.params.symbol;
+  const interval = req.query.interval || '1mo'; // Pega o intervalo da query, se não existir, usa '1mo'
   try {
-    const response = await axios.get(`https://query2.finance.yahoo.com/v8/finance/chart/${symbol}`);
+    const response = await axios.get(`https://query2.finance.yahoo.com/v8/finance/chart/${symbol}?range=${interval}&interval=1mo`);
     res.json(response.data);
   } catch (error) {
-    console.error('Error fetching data from Yahoo Finance:');
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error fetching data from Yahoo Finance:', error.message);
+    res.status(500).json({ error: 'Internal Server Error', details: error.message });
   }
 });
 

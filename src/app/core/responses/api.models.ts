@@ -1,36 +1,70 @@
-// api.models.ts
-
-import { StockPriceData } from "src/app/interfaces/stock-data";
-
-
-
-export interface StockResponse {
-	chart: {
-		result: StockDataResult[]
-		error: null
-	}
-	success: boolean;
+export interface Root {
+	chart: Chart
 }
 
-export interface StockDataResult {
-	data: StockPriceData[];
-	timestamp: number[],
-	indicators: {
-		quote: StockDataQuote
-	}
-}
-//
-export interface StockTradingPeriod {
-	timezone: string;
-	start: number;
-	end: number;
+export interface Chart {
+	result: Result[]
+	error: any
 }
 
+export interface Result {
+	meta: Meta
+	indicators: Indicators
+}
 
-export interface StockDataQuote {
-	low: [];
-	open: [];
-	high: [];
-	volume: [];
-	close: [];
+export interface Meta {
+	currency: string
+	symbol: string
+	exchangeName: string
+	instrumentType: string
+	firstTradeDate: number
+	regularMarketTime: number
+	gmtoffset: number
+	timezone: string
+	exchangeTimezoneName: string
+	regularMarketPrice: number
+	chartPreviousClose: number
+	previousClose: number
+	scale: number
+	priceHint: number
+	currentTradingPeriod: CurrentTradingPeriod
+	dataGranularity: string
+	range: string
+	validRanges: string[]
+}
+
+export interface CurrentTradingPeriod {
+	pre: Pre
+	regular: Regular
+	post: Post
+}
+
+export interface Pre {
+	timezone: string
+	start: number
+	end: number
+	gmtoffset: number
+}
+
+export interface Regular {
+	timezone: string
+	start: number
+	end: number
+	gmtoffset: number
+}
+
+export interface Post {
+	timezone: string
+	start: number
+	end: number
+	gmtoffset: number
+}
+
+export interface Indicators {
+	quote: Quote[]
+}
+
+export interface Quote {
+	close: number[],
+	open: number[]
 }
