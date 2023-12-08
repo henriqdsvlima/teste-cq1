@@ -34,7 +34,7 @@ export class SearchStockComponent {
 
 			this.apiService.fetchStockData(userInput).subscribe(
 				(data) => {
-					console.log('Stock data:', data);
+
 					// Handle the received data from the API, such as displaying it in a chart or updating the view.
 					this.errorMessage = null
 				},
