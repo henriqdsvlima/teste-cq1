@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { ApiService } from '../../../../core/services/api.service';
 import { HttpClient } from '@angular/common/http';
 import { TableData } from 'src/app/interfaces/table-data';
-
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-stock-table',

@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
 import { environment } from '../environment/environment';
-import { ApiError, ApiErrorType } from '../responses/api-error';
 import { Root } from '../responses/api.models';
 
 
@@ -20,7 +19,8 @@ export class ApiService {
 
 	// Get one item by ID
 	fetchStockData(symbol: string, interval: string = '1y'): Observable<Root> {
-		return this.http.get<Root>(`${this.baseUrl}/stock-data/${symbol}?interval=${interval}`);
+		const url = `${this.baseUrl}/stock-data/${symbol}?interval=${interval}`;
+		return this.http.get<Root>(url);
 	}
 
 

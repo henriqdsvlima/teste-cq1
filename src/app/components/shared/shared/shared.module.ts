@@ -16,8 +16,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 		SearchStockComponent],
 	imports: [
 		CommonModule,
+
 		ReactiveFormsModule,
-		NgxChartsModule
+		NgxChartsModule,
+
 	],
 	exports: [
 		HeaderComponent,
